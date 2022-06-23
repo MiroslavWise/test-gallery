@@ -66,7 +66,6 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         >
                                                 <option
                                                         value={null}
-                                                        style={albums.length === photos.length ? cGreen : {}}
                                                         onClick={()=>{ getAuthorPhoto(null)}}
                                                 >
                                                         Все авторы
@@ -77,7 +76,6 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                                                 id={`${user?.username}`}
                                                                                 value={user?.username}
                                                                                 className='option'
-                                                                                style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
                                                                         >
                                                                                 {user?.username}
                                                                         </option>

@@ -19,11 +19,6 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
 
         React.useLayoutEffect(()=>{
                 window.requestAnimationFrame(()=>{
-                        // albums?.map(item => document?.getElementById(`${item?.user?.username}`)?.addEventListener('click', ()=>{console.log('click')}))
-                        const select = document.getElementById('select')
-                        select?.addEventListener('change', ()=> {getAuthorPhoto(select?.value)})
-                })
-                window.requestAnimationFrame(()=>{
                         albums?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{[...e?.target?.classList].includes('del') ? e?.target?.classList.remove('del') :e?.target?.classList.add('del')}))                        
                 })
                 
@@ -33,6 +28,7 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                         [...document.getElementsByClassName('del')].forEach(item => getDeletePhtoto(item?.id))
                 }
         }, false)
+
         console.log(window.outerWidth)
         return(
                 <div className='container_gallery'>
@@ -62,11 +58,9 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         ||
                                         <>
                                         <select
-                                                id='select'
                                         >
                                                 <option
                                                         value={null}
-                                                        style={albums.length === photos.length ? cGreen : {}}
                                                         onClick={()=>{ getAuthorPhoto(null)}}
                                                 >
                                                         Все авторы
@@ -74,9 +68,9 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                 {
                                                         albums.map(({user}) => {
                                                                 return<option 
-                                                                                id={`${user?.username}`}
+                                                                                onClick={e => {console.log(e)}}
                                                                                 value={user?.username}
-                                                                                className='option'
+                                                                                className='button' 
                                                                                 style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
                                                                         >
                                                                                 {user?.username}

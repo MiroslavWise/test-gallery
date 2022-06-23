@@ -19,9 +19,7 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
 
         React.useLayoutEffect(()=>{
                 window.requestAnimationFrame(()=>{
-                        // albums?.map(item => document?.getElementById(`${item?.user?.username}`)?.addEventListener('click', ()=>{console.log('click')}))
-                        const select = document.getElementById('select')
-                        select?.addEventListener('change', ()=> {getAuthorPhoto(select?.value)})
+                        albums?.map(item => document?.getElementById(`${item?.user?.username}`)?.addEventListener('click', ()=>{console.log('click')}))
                 })
                 window.requestAnimationFrame(()=>{
                         albums?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{[...e?.target?.classList].includes('del') ? e?.target?.classList.remove('del') :e?.target?.classList.add('del')}))                        
@@ -63,10 +61,10 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         <>
                                         <select
                                                 id='select'
+                                                onClick={(e) => {console.log('select', e)}}
                                         >
                                                 <option
                                                         value={null}
-                                                        style={albums.length === photos.length ? cGreen : {}}
                                                         onClick={()=>{ getAuthorPhoto(null)}}
                                                 >
                                                         Все авторы
@@ -76,8 +74,7 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                                 return<option 
                                                                                 id={`${user?.username}`}
                                                                                 value={user?.username}
-                                                                                className='option'
-                                                                                style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
+                                                                                className='button' 
                                                                         >
                                                                                 {user?.username}
                                                                         </option>

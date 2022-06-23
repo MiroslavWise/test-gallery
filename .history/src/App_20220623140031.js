@@ -30,7 +30,7 @@ function App() {
     setPage(page + 1)
   }
   const getAuthorPhoto = (username) => {
-    username && username !== 'Все авторы' ? setPhotos(albums.filter(item => item?.user?.username === username)) : setPhotos(albums)
+    username && username !=='Все авторы' ? setPhotos(albums.filter(item => item?.user?.username === username)) : setPhotos(albums)
   }
 
   const getDeletePhtoto = (i) => {
