@@ -70,7 +70,7 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                                 return<option 
                                                                                 className='button' 
                                                                                 style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
-                                                                                onSelect={()=>{ getAuthorPhoto(user?.username)}}
+                                                                                onClick={()=>{ getAuthorPhoto(user?.username)}}
                                                                         >
                                                                                 {user?.username}
                                                                         </option>

@@ -57,24 +57,23 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         </>
                                         ||
                                         <>
+                                        <div 
+                                                className='button' 
+                                                style={albums.length === photos.length ? cGreen : {}}
+                                                onClick={()=>{ getAuthorPhoto(null)}}
+                                        ></div>
                                         <select
                                         >
-                                                <option
-                                                        style={albums.length === photos.length ? cGreen : {}}
-                                                        onClick={()=>{ getAuthorPhoto(null)}}
-                                                >
-                                                        Все авторы
-                                                </option>
                                                 {
                                                         albums.map(({user}) => {
                                                                 return<option 
                                                                                 className='button' 
                                                                                 style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
-                                                                                onSelect={()=>{ getAuthorPhoto(user?.username)}}
+                                                                                onClick={()=>{ getAuthorPhoto(user?.username)}}
                                                                         >
                                                                                 {user?.username}
                                                                         </option>
-                                                })
+                                                }) 
                                                 }
                                         </select>
                                         </>

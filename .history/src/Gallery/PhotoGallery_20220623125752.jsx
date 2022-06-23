@@ -55,29 +55,6 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                         })
                                                 }
                                         </>
-                                        ||
-                                        <>
-                                        <select
-                                        >
-                                                <option
-                                                        style={albums.length === photos.length ? cGreen : {}}
-                                                        onClick={()=>{ getAuthorPhoto(null)}}
-                                                >
-                                                        Все авторы
-                                                </option>
-                                                {
-                                                        albums.map(({user}) => {
-                                                                return<option 
-                                                                                className='button' 
-                                                                                style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
-                                                                                onSelect={()=>{ getAuthorPhoto(user?.username)}}
-                                                                        >
-                                                                                {user?.username}
-                                                                        </option>
-                                                })
-                                                }
-                                        </select>
-                                        </>
                                 }
                         
                         </div>
@@ -104,14 +81,9 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         }
                                         )
                                 }
-                                {
-                                        albums.length === photos.length
-                                        &&
-                                        <div className='item_photo_more' onClick={getPage}>
-                                                <div className='more'>More About</div>
-                                        </div>
-                                }
-                                
+                                <div className='item_photo_more' onClick={getPage}>
+                                        <div className='more'>More About</div>
+                                </div>
                         </div>
                 </div>
         )

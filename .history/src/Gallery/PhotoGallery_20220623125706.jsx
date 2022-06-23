@@ -17,12 +17,12 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
         // console.log([...document.getElementsByClassName('item_photo')])
         // console.log('id: ', photos?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{ console.log('click', [...e?.srcElement?.classList].includes('del') ? e?.srcElement?.classList.remove('del') : e?.srcElement?.classList.add('del'))})))
 
-        React.useEffect(()=>{
+        // React.useEffect(()=>{
                 window.requestAnimationFrame(()=>{
                         albums?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{[...e?.target?.classList].includes('del') ? e?.target?.classList.remove('del') :e?.target?.classList.add('del')}))                        
                 })
                 
-        }, [albums, photos])
+        // }, [albums])
         document.addEventListener('keydown', (event)=>{
                 if(event.code === 'Delete' || event.code === 'Backspace'){
                         [...document.getElementsByClassName('del')].forEach(item => getDeletePhtoto(item?.id))
@@ -55,29 +55,6 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                                         })
                                                 }
                                         </>
-                                        ||
-                                        <>
-                                        <select
-                                        >
-                                                <option
-                                                        style={albums.length === photos.length ? cGreen : {}}
-                                                        onClick={()=>{ getAuthorPhoto(null)}}
-                                                >
-                                                        Все авторы
-                                                </option>
-                                                {
-                                                        albums.map(({user}) => {
-                                                                return<option 
-                                                                                className='button' 
-                                                                                style={photos.every(item => item?.user?.username === user?.username) ? cGreen : {}}
-                                                                                onSelect={()=>{ getAuthorPhoto(user?.username)}}
-                                                                        >
-                                                                                {user?.username}
-                                                                        </option>
-                                                })
-                                                }
-                                        </select>
-                                        </>
                                 }
                         
                         </div>
@@ -104,14 +81,9 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
                                         }
                                         )
                                 }
-                                {
-                                        albums.length === photos.length
-                                        &&
-                                        <div className='item_photo_more' onClick={getPage}>
-                                                <div className='more'>More About</div>
-                                        </div>
-                                }
-                                
+                                <div className='item_photo_more' onClick={getPage}>
+                                        <div className='more'>More About</div>
+                                </div>
                         </div>
                 </div>
         )

@@ -18,9 +18,9 @@ const PhotoGallery = ({albums, photos, getPage, getAuthorPhoto, getDeletePhtoto}
         // console.log('id: ', photos?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{ console.log('click', [...e?.srcElement?.classList].includes('del') ? e?.srcElement?.classList.remove('del') : e?.srcElement?.classList.add('del'))})))
 
         React.useEffect(()=>{
-                window.requestAnimationFrame(()=>{
+                // window.requestAnimationFrame(()=>{
                         albums?.map(item => document?.getElementById(`${item?.id}`)?.addEventListener('click', (e)=>{[...e?.target?.classList].includes('del') ? e?.target?.classList.remove('del') :e?.target?.classList.add('del')}))                        
-                })
+                // })
                 
         }, [albums, photos])
         document.addEventListener('keydown', (event)=>{
